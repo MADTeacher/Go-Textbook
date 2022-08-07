@@ -17,9 +17,9 @@ func main() {
 	g.AddEdgeWithoutWeight("D", "E")
 	g.AddEdgeWithoutWeight("D", "F")
 	g.AddEdgeWithoutWeight("E", "F")
-	topOrder, topClasses, _ := g.TopologicalSort()
-	fmt.Println(topOrder)
-	fmt.Println(topClasses)
+	topList, topMap, _ := g.TopologicalSort()
+	fmt.Println(topList)
+	fmt.Println(topMap)
 }
 
 ///////////////Prim///////////////////////
