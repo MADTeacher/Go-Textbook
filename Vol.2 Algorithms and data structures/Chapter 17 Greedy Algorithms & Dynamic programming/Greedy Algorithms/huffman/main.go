@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	str := "East or West homeппп is best"
+	str := "East or West home is best"
 	fmt.Printf("The original string is: %s\n", str)
 	ht := CreateHuffnamTree([]byte(str))
 	ht.PrintHuffmanCode()

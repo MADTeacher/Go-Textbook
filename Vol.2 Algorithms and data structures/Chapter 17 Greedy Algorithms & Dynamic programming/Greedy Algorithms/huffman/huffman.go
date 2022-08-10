@@ -74,26 +74,6 @@ func newHuffnamTree(root *HuffmanNode) *HuffnamTree {
 	}
 }
 
-func CreateHuffnamTree(text []byte) *HuffnamTree {
-	data := calcFrequency(text)
-	heap := NewHeap[*HuffmanNode](len(data))
-	for symbol, frequency := range data {
-		heap.Insert(newHuffmanNodeLeaf(frequency, symbol))
-	}
-	for heap.Size() > 1 {
-		firstNode, _ := heap.Remove()
-		secondNode, _ := heap.Remove()
-		heap.Insert(newHuffmanNode(firstNode, secondNode))
-	}
-	root, _ := heap.Remove()
-	hTree := newHuffnamTree(root)
-	hTree.encode(hTree.root, "")
-	for _, it := range text {
-		hTree.encodedString += hTree.huffmanCode[it]
-	}
-	return hTree
-}
-
 func (ht *HuffnamTree) PrintHuffmanCode() {
 	fmt.Println("------HuffmanCode------")
 	for k, v := range ht.huffmanCode {
@@ -155,4 +135,24 @@ func (ht *HuffnamTree) GetDecodedString(str string) string {
 	}
 
 	return string(text)
+}
+
+func CreateHuffnamTree(text []byte) *HuffnamTree {
+	data := calcFrequency(text)
+	heap := NewHeap[*HuffmanNode](len(data))
+	for symbol, frequency := range data {
+		heap.Insert(newHuffmanNodeLeaf(frequency, symbol))
+	}
+	for heap.Size() > 1 {
+		firstNode, _ := heap.Remove()
+		secondNode, _ := heap.Remove()
+		heap.Insert(newHuffmanNode(firstNode, secondNode))
+	}
+	root, _ := heap.Remove()
+	hTree := newHuffnamTree(root)
+	hTree.encode(hTree.root, "")
+	for _, it := range text {
+		hTree.encodedString += hTree.huffmanCode[it]
+	}
+	return hTree
 }
