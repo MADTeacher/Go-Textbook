@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 	"strconv"
-	"udp/server/client"
-	"udp/server/server"
+	"udp/client"
+	"udp/server"
 )
 
 const PORT = 8081
