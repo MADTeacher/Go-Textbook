@@ -221,10 +221,9 @@ func (c *Client) CreateOrder() {
 	ot := orderTypes[rand.Intn(len(orderTypes))]
 	c.order = NewOrder(ot)
 	fmt.Printf("Client %v made   %v \n", c.name, c.order)
+	c.barista.Attach(c)
 	c.barista.TakeOrder(*c.order)
 }
-
-// fmt.Printf("%v \n", c.pizza.String())
 
 // ////////////////////////////////////
 func main() {
@@ -247,7 +246,6 @@ func main() {
 	for _, client := range clients {
 		fmt.Println("*********************************")
 		client.CreateOrder()
-		barista.Attach(client)
 	}
 	fmt.Println("*********************************")
 	fmt.Println("****Barista starts to fill orders****")
