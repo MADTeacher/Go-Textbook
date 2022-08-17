@@ -260,12 +260,10 @@ func (w *WorkersMediator) RemoveWorker(worker IWorker) {
 			index = idx
 		}
 	}
-	if index > 0 {
+	if index >= 0 {
 		copy(w.workers[wt][index:], w.workers[wt][index+1:])
 		w.workers[wt][len(w.workers[wt])-1] = nil
 		w.workers[wt] = w.workers[wt][:len(w.workers[wt])-1]
-	} else if index == 0 {
-		w.workers[wt] = []IWorker{}
 	} else {
 		panic("worker with id = " + fmt.Sprint(worker.GetID()) + "not found")
 	}
