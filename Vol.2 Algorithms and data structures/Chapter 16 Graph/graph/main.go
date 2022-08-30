@@ -5,7 +5,7 @@ import (
 	"graph/graph"
 )
 
-/////////////TopologicalSort/////////////
+// ///////////TopologicalSort/////////////
 func main() {
 	g := graph.NewDirecteGraph[string]()
 
